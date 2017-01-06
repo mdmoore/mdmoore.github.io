@@ -1,21 +1,18 @@
-const secondHand = document.querySelector('.second-hand');
-const minsHand = document.querySelector('.min-hand');
-const hourHand = document.querySelector('.hour-hand');
+const favzies = prompt('What are your favorite things?');
+const text = document.querySelector('.text');
+const inputs = document.querySelectorAll('.controls input');
 
-function setDate() {
-	const now = new Date();
-	const seconds = now.getSeconds();
-	const secondsDegrees = ((seconds / 60) * 360) + 90;
-	secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+function handleUpdate() {
+	const suffix = this.dataset.sizing || '';
+	document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
 
-	const mins = now.getMinutes();
-	const minsDegrees = ((mins / 60) * 360) + 90;
-	minsHand.style.transform = `rotate($(minsDegrees)deg)`;
-
-	const hour = now.getHours();
-	const hoursDegrees = ((mins / 12) * 360) + 90;
-	hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+	if (this.value == 360){
+		document.documentElement.style.setProperty(`--base`, '#60BB1E');
+		text.innerHTML="Maximum Rotation Achieved!!! <br> You've earned 500 " + favzies + "! <br> Prepare for <a target='_blank' href='https://youtu.be/dQw4w9WgXcQ'>level 2</a>...";
+		text.style.setProperty('display', 'block');
+	}
 
 }
 
-setInterval(setDate, 1000);
+inputs.forEach(input => input.addEventListener('change', handleUpdate));
+inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
