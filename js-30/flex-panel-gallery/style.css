@@ -40,6 +40,9 @@ body {
   flex-direction: column;
 }
 
+.panel:hover{
+  cursor: pointer;
+}
 
 .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
 .panel2 { background-image:url(https://source.unsplash.com/1CD3fd8kHnE/1500x1500); }
